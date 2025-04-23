@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import "./Card.css";
 
 const Card = ({ image, flipped, onClick }) => {
-  const [isFlipped, setIsFlipped] = useState(false); // Cambio de nombre para evitar conflicto
 
   const handleClick = () => {
-    if (!isFlipped) {
+    if (!flipped) {
       onClick();
     }
   };

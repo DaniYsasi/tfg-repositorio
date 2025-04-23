@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import "./Board.css";
-
+import cerdito from "../assets/cerdito.png";
+import ciervo from "../assets/ciervo.png";
+import erizo from "../assets/erizo.png";
 
 const images = [
-  "/img1.png", "/img2.png", "/img3.png", "/img1.png", "/img2.png", "/img3.png"
+  cerdito, ciervo, erizo, cerdito, ciervo, erizo
 ];
 
 const Board = () => {
-  const [cards, setCards] = useState(images.sort(() => Math.random() - 0.5));
+  const shuffledImages = [...images].sort(() => Math.random() - 0.5);
+  const [cards, setCards] = useState(shuffledImages);
   const [selectedCards, setSelectedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState([]);
+  
 
   const handleCardClick = (index) => {
     if (selectedCards.length < 2 && !selectedCards.includes(index) && !matchedCards.includes(index)) { //evitamos escoger una carta ya emparejada
@@ -32,7 +36,7 @@ const Board = () => {
       // Reset de las cartas seleccionadas después de un tiempo, volviendo a poder seleccionar
       setTimeout(() => {
         setSelectedCards([]);
-       }, 500);
+       }, 1500);
     }
   }, [selectedCards]);
 
