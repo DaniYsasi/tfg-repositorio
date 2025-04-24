@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import "./Board.css";
+// Importamos las imágenes de los animales
 import cerdito from "../assets/cerdito.png";
 import ciervo from "../assets/ciervo.png";
 import erizo from "../assets/erizo.png";
+// Importamos los sonidos de éxito y error
 import successSound from "../assets/success-sound.wav";
 import errorSound from "../assets/error-sound.wav";
 
@@ -14,9 +16,9 @@ const images = [
 
 const Board = () => {
   const shuffledImages = [...images].sort(() => Math.random() - 0.5);
-  const [cards, setCards] = useState(shuffledImages);
   const [selectedCards, setSelectedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState([]);
+  const [cards] = useState(shuffledImages); // Estado para las cartas
   const playSuccessSound = () => {
     const audio = new Audio(successSound);
     audio.play();
@@ -26,8 +28,16 @@ const Board = () => {
     audio.play();
   }
   
+  const [time, setTime] = useState(0); // Temporizador del juego
+  const [isPlaying, setIsPlaying] = useState(false); // Estado para controlar si el juego está en progreso
+  const [moves, setMoves] = useState(0); // Contador de movimientos
+  const [gameOverMessage, setGameOverMessage] = useState(""); // Mensaje de fin de juego
 
   const handleCardClick = (index) => {
+    if (!isPlaying) {
+      setIsPlaying(true);
+      setTime(0);
+    }
     if (selectedCards.length < 2 && !selectedCards.includes(index) && !matchedCards.includes(index)) { //evitamos escoger una carta ya emparejada
       setSelectedCards(prev => [...prev, index]);
       //con prev usamos el valor anterior del estado para evitar problemas de asincronía
@@ -54,11 +64,48 @@ const Board = () => {
         setSelectedCards([]);
        }, 1000);
     }
+
   }, [selectedCards]);
 
+  // Incrementar tiempo cuando el juego está activo
+  useEffect(() => {
+    let timer;
+    if (isPlaying) {
+      timer = setInterval(() => {
+        setTime(prev => prev + 1);
+      }, 1000);
+    }
+      return () => clearInterval(timer);
+    }, [isPlaying]);
+
+    // Comprobar si se han emparejado todas las cartas
+    // Si es así, mostrar un mensaje de victoria y detener el temporizador
+    useEffect(() => {
+      if (matchedCards.length === cards.length && matchedCards.length > 0) {
+        setGameOverMessage("¡Felicidades! Has ganado el juego.");
+        setIsPlaying(false); // Detiene el temporizador
+        console.log("Has ganado el juego. Tiempo: " + time + " segundos. Movimientos: " + moves);
+      }
+    },[matchedCards, cards.length, time, moves, cards]);
+
+    // Contar los movimientos del jugador
+    useEffect(() => {
+      if (selectedCards.length === 2) {
+        setMoves(prevMoves => prevMoves + 1);
+      }
+    }, [selectedCards]);  
+
   return (
-    <div className="board">
-      {cards.map((image, index) => (
+    // Mostrar tiempo y movimientos en pantalla
+    <div>
+      <div className="game-info">
+      <p>Tiempo: {time} segundos</p>
+      <p>Movimientos: {moves}</p>
+      {gameOverMessage && <p className="game-over">{gameOverMessage}</p>}
+      </div>
+
+      <div className="board"> 
+        {cards.map((image, index) => (
         <Card 
           key={index} 
           image={image} 
@@ -66,6 +113,7 @@ const Board = () => {
           onClick={() => handleCardClick(index)} 
         />
       ))}
+      </div>
     </div>
   );
 };
