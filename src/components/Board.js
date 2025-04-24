@@ -4,6 +4,9 @@ import "./Board.css";
 import cerdito from "../assets/cerdito.png";
 import ciervo from "../assets/ciervo.png";
 import erizo from "../assets/erizo.png";
+import successSound from "../assets/success-sound.wav";
+import errorSound from "../assets/error-sound.wav";
+
 
 const images = [
   cerdito, ciervo, erizo, cerdito, ciervo, erizo
@@ -14,6 +17,14 @@ const Board = () => {
   const [cards, setCards] = useState(shuffledImages);
   const [selectedCards, setSelectedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState([]);
+  const playSuccessSound = () => {
+    const audio = new Audio(successSound);
+    audio.play();
+  }
+  const playErrorSound = () => {
+    const audio = new Audio(errorSound);
+    audio.play();
+  }
   
 
   const handleCardClick = (index) => {
@@ -32,11 +43,16 @@ const Board = () => {
       // Si no son iguales, las ocultamos después de un tiempo
       if (cards[firstIndex] === cards[secondIndex]) {
         setMatchedCards(prev => [...prev, firstIndex, secondIndex]);
+        playSuccessSound();
       }
+      else {
+        playErrorSound();
+      }
+
       // Reset de las cartas seleccionadas después de un tiempo, volviendo a poder seleccionar
       setTimeout(() => {
         setSelectedCards([]);
-       }, 1500);
+       }, 1000);
     }
   }, [selectedCards]);
 
