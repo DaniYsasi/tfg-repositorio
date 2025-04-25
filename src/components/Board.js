@@ -18,7 +18,7 @@ const Board = () => {
   const shuffledImages = [...images].sort(() => Math.random() - 0.5);
   const [selectedCards, setSelectedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState([]);
-  const [cards] = useState(shuffledImages); // Estado para las cartas
+  const [cards, setCards] = useState(shuffledImages); // Estado para las cartas
   const playSuccessSound = () => {
     const audio = new Audio(successSound);
     audio.play();
@@ -27,6 +27,16 @@ const Board = () => {
     const audio = new Audio(errorSound);
     audio.play();
   }
+
+  const resetGame = () => {
+    const shuffledImages = [...images].sort(() => Math.random() - 0.5); // Baraja las cartas
+    setCards(shuffledImages);  // Actualiza el estado de las cartas
+    setMatchedCards([]);       // Reinicia las cartas emparejadas
+    setSelectedCards([]);      // Limpia las cartas seleccionadas
+    setMoves(0);               // Reinicia el contador de movimientos
+    setTime(0);                // Reinicia el temporizador
+    setIsPlaying(false);       // Detiene el temporizador
+  };
   
   const [time, setTime] = useState(0); // Temporizador del juego
   const [isPlaying, setIsPlaying] = useState(false); // Estado para controlar si el juego está en progreso
@@ -114,6 +124,7 @@ const Board = () => {
         />
       ))}
       </div>
+      <button className="reset-button" onClick={resetGame}>Reiniciar Juego</button>
     </div>
   );
 };
