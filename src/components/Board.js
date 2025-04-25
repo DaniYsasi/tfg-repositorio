@@ -2,23 +2,70 @@ import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import "./Board.css";
 // Importamos las imágenes de los animales
-import cerdito from "../assets/cerdito.png";
-import ciervo from "../assets/ciervo.png";
-import erizo from "../assets/erizo.png";
+import aguila from "../assets/aguila.png";
+import buitre from "../assets/buitre.png";
+import jaguar from "../assets/jaguar.png";
+import leon from "../assets/leon.png";
+import lobo from "../assets/lobo.png";
+import oso from "../assets/oso.png";
+import pato from "../assets/pato.png";
+import pez from "../assets/pez.png";
+import tigre from "../assets/tigre.png";
+// Importamos las imágenes de las frutas
+import ciruela from "../assets/ciruela.png";
+import fresa from "../assets/fresa.png";
+import mango from "../assets/mango.png";
+import manzana from "../assets/manzana.png";
+import melocoton from "../assets/melocoton.png";
+import pera from "../assets/pera.png";
+import piña from "../assets/piña.png";
+import sandia from "../assets/sandia.png";
+import uva from "../assets/uva.png";
+
 // Importamos los sonidos de éxito y error
 import successSound from "../assets/success-sound.wav";
 import errorSound from "../assets/error-sound.wav";
 
+//Obtemos las imágenes según el tema seleccionado
+const getImagesByTheme = theme => {
+  switch (theme) {
+    case "animals":
+      return [aguila, buitre, jaguar, leon, lobo, oso, pato, pez, tigre, aguila, buitre, jaguar, leon, lobo, oso, pato, pez, tigre];
+    case "fruits":
+      return [ciruela, fresa, mango, manzana, melocoton, pera, piña, sandia, uva, ciruela, fresa, mango, manzana, melocoton, pera, piña, sandia, uva];
+    case "objects":
+      return [aguila, buitre, jaguar, leon, lobo, oso, pato, pez, tigre, aguila, buitre, jaguar, leon, lobo, oso, pato, pez, tigre]; 
+    default:
+      return [ciruela, fresa, mango, manzana, melocoton, pera, piña, sandia, uva, ciruela, fresa, mango, manzana, melocoton, pera, piña, sandia, uva]; 
+      // Por defecto, usamos frutas
+  }
+};
 
-const images = [
-  cerdito, ciervo, erizo, cerdito, ciervo, erizo
-];
+// Establecer la dificultad del juego
+const getNumberOfCards = (difficulty) => {
+  switch (difficulty) {
+    case "easy":
+      return 6; // 3 pares
+    case "medium":
+      return 12; // 6 pares
+    case "hard":
+      return 18; // 9 pares
+    default:
+      return 6; // Por defecto, usamos fácil
+  }
+};
 
-const Board = () => {
-  const shuffledImages = [...images].sort(() => Math.random() - 0.5);
+// Componente principal del tablero del juego
+const Board = ({theme, difficulty}) => {
+  const images = getImagesByTheme(theme); // Obtenemos las imágenes según el tema
+  const numberOfCards = getNumberOfCards(difficulty); // Obtenemos el número de cartas según la dificultad
   const [selectedCards, setSelectedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState([]);
-  const [cards, setCards] = useState(shuffledImages); // Estado para las cartas
+  const [cards, setCards] = useState(() => {
+    const selectedImages = images.slice(0, numberOfCards/2); // Selecciona las imágenes según la dificultad
+    return [...selectedImages, ...selectedImages].sort(() => Math.random() - 0.5); // Devuelve solo el número de cartas según la dificultad
+  });
+  
   const playSuccessSound = () => {
     const audio = new Audio(successSound);
     audio.play();
@@ -29,14 +76,21 @@ const Board = () => {
   }
 
   const resetGame = () => {
-    const shuffledImages = [...images].sort(() => Math.random() - 0.5); // Baraja las cartas
+    const shuffledImages = [...images.slice(0, numberOfCards/2), ...images.slice(0, numberOfCards/2)].sort(() => Math.random() - 0.5); // Baraja las cartas
     setCards(shuffledImages);  // Actualiza el estado de las cartas
     setMatchedCards([]);       // Reinicia las cartas emparejadas
     setSelectedCards([]);      // Limpia las cartas seleccionadas
     setMoves(0);               // Reinicia el contador de movimientos
     setTime(0);                // Reinicia el temporizador
     setIsPlaying(false);       // Detiene el temporizador
+    setGameOverMessage("");    // Limpia el mensaje de fin de juego
   };
+
+  console.log("Dificultad: ", difficulty);
+  console.log("Temática: ", theme);
+  console.log("Número de cartas: ", numberOfCards);
+  console.log("Cartas: ", cards);
+  console.log("Imágenes seleccionadas: ", images);
   
   const [time, setTime] = useState(0); // Temporizador del juego
   const [isPlaying, setIsPlaying] = useState(false); // Estado para controlar si el juego está en progreso

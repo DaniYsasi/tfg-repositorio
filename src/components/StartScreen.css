@@ -1,0 +1,47 @@
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #282c34;
+  color: white;
+}
+.start-screen h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.settings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+select {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+.start-screen p {
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+.start-button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #61dafb;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.start-button:hover {
+  background-color: #21a1f1;
+}

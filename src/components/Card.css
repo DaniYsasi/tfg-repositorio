@@ -1,6 +1,6 @@
 .card {
   width: 100px;
-  height: 140px;
+  height: 125px;
   perspective: 1000px;
   cursor: pointer;
 }

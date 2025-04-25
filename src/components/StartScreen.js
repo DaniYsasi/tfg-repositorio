@@ -1,0 +1,41 @@
+import React from "react";
+import "./StartScreen.css";
+
+// Componente de pantalla de inicio del juego
+// Permite al usuario seleccionar la dificultad y la temática del juego
+const StartScreen = ({ onStartGame, onSetDifficulty, onSetTheme }) => {
+  const handleDifficultyChange = (event) => {
+    onSetDifficulty(event.target.value);
+  };
+
+  const handleThemeChange = (event) => {
+    onSetTheme(event.target.value);
+  };
+
+  return (
+    <div className="start-screen">
+      <h1>Juego de Memoria</h1>
+      <div className="settings">
+        <label>
+          Dificultad:
+          <select onChange={handleDifficultyChange}>
+            <option value="easy">Fácil</option>
+            <option value="medium">Media</option>
+            <option value="hard">Difícil</option>
+          </select>
+        </label>
+        <label>
+          Temática:
+          <select onChange={handleThemeChange}>
+            <option value="animals">Animales</option>
+            <option value="fruits">Frutas</option>
+            <option value="objects">Objetos</option>
+          </select>
+        </label>
+      </div>
+      <button className="start-button" onClick={onStartGame}>Iniciar Juego</button>
+    </div>
+  );
+};
+
+export default StartScreen;
