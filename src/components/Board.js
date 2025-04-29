@@ -2,25 +2,27 @@ import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import "./Board.css";
 // Importamos las imágenes de los animales
-import aguila from "../assets/aguila.png";
-import buitre from "../assets/buitre.png";
-import jaguar from "../assets/jaguar.png";
-import leon from "../assets/leon.png";
-import lobo from "../assets/lobo.png";
+import caballomar from "../assets/caballomar.png";
+import delfin from "../assets/delfin.png";
+import koala from "../assets/koala.png";
+import mariposa from "../assets/mariposa.png";
 import oso from "../assets/oso.png";
-import pato from "../assets/pato.png";
-import pez from "../assets/pez.png";
 import tigre from "../assets/tigre.png";
+import tortuga from "../assets/tortuga.png";
+import unicornio from "../assets/unicornio.png";
+import perro from "../assets/perro.png";
+import stimpy from "../assets/stimpy.png";
+import ren from "../assets/ren.png";
 // Importamos las imágenes de las frutas
-import ciruela from "../assets/ciruela.png";
+import cereza from "../assets/cereza.png";
 import fresa from "../assets/fresa.png";
-import mango from "../assets/mango.png";
+import limon from "../assets/limon.png";
 import manzana from "../assets/manzana.png";
-import melocoton from "../assets/melocoton.png";
 import pera from "../assets/pera.png";
 import piña from "../assets/piña.png";
-import sandia from "../assets/sandia.png";
+import platano from "../assets/platano.png";
 import uva from "../assets/uva.png";
+import coco from "../assets/coco.png";
 
 // Importamos los sonidos de éxito y error
 import successSound from "../assets/success-sound.wav";
@@ -30,14 +32,14 @@ import errorSound from "../assets/error-sound.wav";
 const getImagesByTheme = theme => {
   switch (theme) {
     case "animals":
-      return [aguila, buitre, jaguar, leon, lobo, oso, pato, pez, tigre, aguila, buitre, jaguar, leon, lobo, oso, pato, pez, tigre];
+      return [unicornio, caballomar, delfin, koala, stimpy, oso, tigre, tortuga, ren, unicornio, caballomar, delfin, koala, stimpy, oso, tigre, tortuga, ren];
     case "fruits":
-      return [ciruela, fresa, mango, manzana, melocoton, pera, piña, sandia, uva, ciruela, fresa, mango, manzana, melocoton, pera, piña, sandia, uva];
+      return [cereza, fresa, limon, manzana, pera, piña, platano, uva, coco, cereza, fresa, limon, manzana, pera, piña, platano, uva, coco];
     case "objects":
-      return [aguila, buitre, jaguar, leon, lobo, oso, pato, pez, tigre, aguila, buitre, jaguar, leon, lobo, oso, pato, pez, tigre]; 
+      return [unicornio, caballomar, delfin, koala, stimpy, oso, tigre, tortuga, ren, unicornio, caballomar, delfin, koala, stimpy, oso, tigre, tortuga, ren]; 
     default:
-      return [ciruela, fresa, mango, manzana, melocoton, pera, piña, sandia, uva, ciruela, fresa, mango, manzana, melocoton, pera, piña, sandia, uva]; 
-      // Por defecto, usamos frutas
+      return [unicornio, caballomar, delfin, koala, stimpy, oso, tigre, tortuga, ren, unicornio, caballomar, delfin, koala, stimpy, oso, tigre, tortuga, ren]; 
+      // Por defecto, usamos animales
   }
 };
 
@@ -56,7 +58,7 @@ const getNumberOfCards = (difficulty) => {
 };
 
 // Componente principal del tablero del juego
-const Board = ({theme, difficulty}) => {
+const Board = ({theme, difficulty, setGameStarted}) => {
   const images = getImagesByTheme(theme); // Obtenemos las imágenes según el tema
   const numberOfCards = getNumberOfCards(difficulty); // Obtenemos el número de cartas según la dificultad
   const [selectedCards, setSelectedCards] = useState([]);
@@ -179,6 +181,7 @@ const Board = ({theme, difficulty}) => {
       ))}
       </div>
       <button className="reset-button" onClick={resetGame}>Reiniciar Juego</button>
+      <button className="exit-button" onClick={() => setGameStarted(false)}>Salir Menú Principal</button>
     </div>
   );
 };

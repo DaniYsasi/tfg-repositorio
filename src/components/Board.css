@@ -1,11 +1,18 @@
 /* Añadir estilos básicos */
 .board {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
+  max-width:90%;
   padding: 20px;
+  background-color: #282c34;
+  border: 2px solid #00ff00;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #00ff00; /* Efecto de sombra */
+  transition: background-color 0.3s ease;
 }
 
 /* Añadir estilo a los contadores de game-info*/
@@ -36,10 +43,10 @@
 
 /* Añadir estilo a los botones reset*/ 
 .reset-button {
-  background-color: #007BFF; /* Verde */
+  background-color: #ff007f;
   color: white;
   padding: 10px 20px;
-  border: none;
+  border: 2px solid #ff007f; 
   border-radius: 5px;
   cursor: pointer;
   margin-top: 20px;
@@ -49,5 +56,21 @@
 }
 
 .reset-button:hover {
-  background-color: #0056b3; /* Azul más oscuro */
+  background-color: #00ff00; /* Azul más oscuro */
+}
+
+.exit-button {
+  background-color: #ff007f; 
+  color: white;
+  padding: 10px 20px;
+  border: 2px solid #ff007f;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.exit-button:hover {
+  background-color: #00ff00; /* Verde más oscuro */
 }
