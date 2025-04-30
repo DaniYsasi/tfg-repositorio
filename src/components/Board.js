@@ -70,10 +70,12 @@ const Board = ({theme, difficulty, setGameStarted}) => {
   
   const playSuccessSound = () => {
     const audio = new Audio(successSound);
+    audio.volume = 0.3; // Ajusta el volumen
     audio.play();
   }
   const playErrorSound = () => {
     const audio = new Audio(errorSound);
+    audio.volume = 0.3; // Ajusta el volumen
     audio.play();
   }
 

@@ -36,3 +36,21 @@ button:hover {
   transition: all 0.3s ease; /* Transiciones suaves */
 
 }
+
+#volume-control {
+  appearance: none;
+  width: 200px;
+  height: 10px;
+  background: #ff007f;
+  border-radius: 5px;
+  cursor: pointer
+}
+
+#volume-control::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #00ff00;
+  border-radius: 50%;
+  cursor: pointer;
+}
