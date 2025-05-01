@@ -103,14 +103,6 @@ function App() {
         toggleMusic={toggleMusic}  // Pasar la función de detener/reanudar música
         isMusicPaused={isMusicPaused}  // Pasar el estado de la música
         />
-      <VolumeControl
-        audio={audio} // Pasa el objeto de audio al componente VolumeControl
-        volume={volume} // Pasa el volumen actual al componente VolumeControl
-        setVolume={setVolume} // Pasa la función para actualizar el volumen al componente VolumeControl
-      />
-      <button className="stop-music" onClick={toggleMusic}>
-      {isMusicPaused ? "Reanudar Música" : "Detener Música"}
-      </button>
       </div>
       )}
       <footer>

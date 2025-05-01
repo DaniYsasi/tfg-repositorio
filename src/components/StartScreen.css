@@ -61,6 +61,10 @@ select {
   font-weight: bold;
   text-shadow: 0px 0px 10px #ff007f;
   transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
+  text-shadow: -1px -1px 0 #000, 
+               1px -1px 0 #000, 
+               -1px 1px 0 #000, 
+               1px 1px 0 #000; /* Simula un borde negro en el texto */
 }
 .start-button:hover {
   background-color: #00ff00;
@@ -69,4 +73,8 @@ select {
   animation: glow 1s infinite;
   box-shadow: 0px 0px 10px #00ff00;
   transition: all 0.3s ease;
+  text-shadow: -1px -1px 0 #000, 
+               1px -1px 0 #000, 
+               -1px 1px 0 #000, 
+               1px 1px 0 #000; /* Simula un borde negro en el texto */
 }

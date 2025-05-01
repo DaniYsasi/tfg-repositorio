@@ -25,6 +25,7 @@ import coco from "../assets/coco.png";
 // Importamos los sonidos de éxito y error
 import successSound from "../assets/success-sound.wav";
 import errorSound from "../assets/error-sound.wav";
+import VolumeControl from "./VolumeControl";
 
 //Obtemos las imágenes según el tema seleccionado
 const getImagesByTheme = theme => {
@@ -56,7 +57,7 @@ const getNumberOfCards = (difficulty) => {
 };
 
 // Componente principal del tablero del juego
-const Board = ({theme, difficulty, setGameStarted, setDifficulty, setTheme}) => {
+const Board = ({theme, difficulty, setGameStarted, setDifficulty, setTheme, audio, volume, setVolume, toggleMusic, isMusicPaused}) => {
   const images = getImagesByTheme(theme); // Obtenemos las imágenes según el tema
   const numberOfCards = getNumberOfCards(difficulty); // Obtenemos el número de cartas según la dificultad
   const [selectedCards, setSelectedCards] = useState([]);
@@ -205,8 +206,20 @@ const Board = ({theme, difficulty, setGameStarted, setDifficulty, setTheme}) => 
           />
         ))}
     </div>
-      <button className="reset-button" onClick={resetGame}>Reiniciar</button>
-      <button className="exit-button" onClick={handleExit}>Menú Principal</button>
+
+    <div className="controls-container">
+      <div className="game-buttons">
+        <button className="reset-button" onClick={resetGame}>Nueva Partida</button>
+        <button className="exit-button" onClick={handleExit}>Menú Principal</button>
+    </div>
+
+    <div className="music-controls">
+      <VolumeControl audio={audio} volume={volume} setVolume={setVolume} />
+      <button className="stop-music" onClick={toggleMusic}>
+        {isMusicPaused ? "Reanudar Música" : "Detener Música"}
+      </button>
+    </div>
+    </div>
     </div>
   );
 };

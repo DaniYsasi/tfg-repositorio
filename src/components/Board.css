@@ -49,10 +49,18 @@
   font-size: 16px;
   font-weight: bold;
   transition: background-color 0.3s ease;
+  text-shadow: -1px -1px 0 #000, 
+               1px -1px 0 #000, 
+               -1px 1px 0 #000, 
+               1px 1px 0 #000; /* Simula un borde negro en el texto */
 }
 
 .reset-button:hover {
   background-color: #00ff00; /* Azul más oscuro */
+  text-shadow: -1px -1px 0 #000, 
+               1px -1px 0 #000, 
+               -1px 1px 0 #000, 
+               1px 1px 0 #000; /* Simula un borde negro en el texto */
 }
 
 .exit-button {
@@ -66,9 +74,17 @@
   font-size: 16px;
   font-weight: bold;
   transition: background-color 0.3s ease;
+  text-shadow: -1px -1px 0 #000, 
+               1px -1px 0 #000, 
+               -1px 1px 0 #000, 
+               1px 1px 0 #000; /* Simula un borde negro en el texto */
 }
 .exit-button:hover {
   background-color: #00ff00; /* Verde más oscuro */
+  text-shadow: -1px -1px 0 #000, 
+               1px -1px 0 #000, 
+               -1px 1px 0 #000, 
+               1px 1px 0 #000; /* Simula un borde negro en el texto */
 }
 
 /* Ajustar el diseño del board */
@@ -79,30 +95,56 @@
   justify-content: center;
 }
 
+.controls-container {
+  display: flex;
+  justify-content: space-between; /* Espacio entre los controles */
+  align-items: center;
+  width: 60%;
+  margin-top: 20px; /* Separación con el board */
+}
+
+.game-buttons {
+  display: flex;
+  gap: 20px; /* Espaciado entre botones */
+  justify-content: flex-start; /* Alinear a la izquierda */
+}
+
 /* Contenedor de los controles de música */
 .music-controls {
   display: flex;
-  justify-content: center; /* Centrar horizontalmente */
-  align-items: center; /* Alinear verticalmente */
   gap: 15px; /* Espaciado entre barra de volumen y botón */
-  margin-top: 20px; /* Separación con el board */
+  justify-content: flex-end; /* Alinear a la derecha */
+  align-items: center; /* Alinear verticalmente */
 }
 
 /* Botón de detener música */
 .stop-music {
   background-color: #ff007f;
   color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 15px;
+  border: 2px solid #ff007f;
+  border-radius: 10px;
   cursor: pointer;
-  font-family: "Press Start 2P", cursive;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 0px 0px 10px #ff007f; /* Efecto de brillo */ 
+  text-shadow: -1px -1px 0 #000, 
+               1px -1px 0 #000, 
+               -1px 1px 0 #000, 
+               1px 1px 0 #000; /* Simula un borde negro en el texto */
 }
 
-/* Contenedor para los botones de juego */
-.game-buttons {
-  display: flex;
-  justify-content: center; /* Centrar horizontalmente */
-  gap: 20px; /* Espaciado entre botones */
-  margin-top: 20px; /* Separación con los controles de música */
+.stop-music:hover {
+  background-color: #00ff00; /* Cambia a verde neón al pasar el mouse */ 
+  transform: scale(1.05); /* Efecto de aumento al pasar el mouse */ 
+  border-color: #00ff00; 
+  text-shadow: 0px 0px 10px #00ff00; /* Efecto de brillo */ 
+  box-shadow: 0px 0px 10px #00ff00; /* Efecto de sombra */ 
+  animation: glow 1s infinite; /* Efecto de parpadeo */ 
+  transition: all 0.3s ease; /* Transiciones suaves */
+  text-shadow: -1px -1px 0 #000, 
+               1px -1px 0 #000, 
+               -1px 1px 0 #000, 
+               1px 1px 0 #000; /* Simula un borde negro en el texto */
 }
