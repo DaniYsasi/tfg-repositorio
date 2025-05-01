@@ -5,12 +5,10 @@ import "./Board.css";
 import caballomar from "../assets/caballomar.png";
 import delfin from "../assets/delfin.png";
 import koala from "../assets/koala.png";
-import mariposa from "../assets/mariposa.png";
 import oso from "../assets/oso.png";
 import tigre from "../assets/tigre.png";
 import tortuga from "../assets/tortuga.png";
 import unicornio from "../assets/unicornio.png";
-import perro from "../assets/perro.png";
 import stimpy from "../assets/stimpy.png";
 import ren from "../assets/ren.png";
 // Importamos las imágenes de las frutas
@@ -58,7 +56,7 @@ const getNumberOfCards = (difficulty) => {
 };
 
 // Componente principal del tablero del juego
-const Board = ({theme, difficulty, setGameStarted}) => {
+const Board = ({theme, difficulty, setGameStarted, setDifficulty, setTheme}) => {
   const images = getImagesByTheme(theme); // Obtenemos las imágenes según el tema
   const numberOfCards = getNumberOfCards(difficulty); // Obtenemos el número de cartas según la dificultad
   const [selectedCards, setSelectedCards] = useState([]);
@@ -75,7 +73,7 @@ const Board = ({theme, difficulty, setGameStarted}) => {
   }
   const playErrorSound = () => {
     const audio = new Audio(errorSound);
-    audio.volume = 0.3; // Ajusta el volumen
+    audio.volume = 0.5; // Ajusta el volumen
     audio.play();
   }
 
@@ -88,6 +86,12 @@ const Board = ({theme, difficulty, setGameStarted}) => {
     setTime(0);                // Reinicia el temporizador
     setIsPlaying(false);       // Detiene el temporizador
     setGameOverMessage("");    // Limpia el mensaje de fin de juego
+  };
+
+  const handleExit = () => {
+    setGameStarted(false); // Cambia el estado del juego a no iniciado
+    setDifficulty("easy"); // Reinicia la dificultad a fácil
+    setTheme("animals");   // Reinicia la temática a animales
   };
 
   console.log("Dificultad: ", difficulty);
@@ -132,7 +136,6 @@ const Board = ({theme, difficulty, setGameStarted}) => {
         setSelectedCards([]);
        }, 1000);
     }
-
   }, [selectedCards]);
 
   // Incrementar tiempo cuando el juego está activo
@@ -183,7 +186,7 @@ const Board = ({theme, difficulty, setGameStarted}) => {
       ))}
       </div>
       <button className="reset-button" onClick={resetGame}>Reiniciar Juego</button>
-      <button className="exit-button" onClick={() => setGameStarted(false)}>Salir Menú Principal</button>
+      <button className="exit-button" onClick={handleExit}>Salir Menú Principal</button>
     </div>
   );
 };

@@ -59,14 +59,6 @@ function App() {
           onSetDifficulty={setDifficulty}
           onSetTheme={setTheme}
         />
-        <VolumeControl
-          audio={audio} // Pasa el objeto de audio al componente VolumeControl
-          volume={volume} // Pasa el volumen actual al componente VolumeControl
-          setVolume={setVolume} // Pasa la función para actualizar el volumen al componente VolumeControl
-        />
-        <button className="stop-music" onClick={toggleMusic}>
-          {isMusicPaused ? "Reanudar Música" : "Detener Música"}
-        </button>
         </div>
       ) : (
         <div className="board-screen-container">
@@ -74,6 +66,8 @@ function App() {
         difficulty={difficulty} 
         theme={theme}
         setGameStarted = {setGameStarted} 
+        setDifficulty={setDifficulty}  
+        setTheme={setTheme}
         />
       <VolumeControl
         audio={audio} // Pasa el objeto de audio al componente VolumeControl
@@ -81,7 +75,7 @@ function App() {
         setVolume={setVolume} // Pasa la función para actualizar el volumen al componente VolumeControl
       />
       <button className="stop-music" onClick={toggleMusic}>
-        Detener Música
+      {isMusicPaused ? "Reanudar Música" : "Detener Música"}
       </button>
       </div>
       )}
