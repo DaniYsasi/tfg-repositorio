@@ -11,7 +11,6 @@
   position: relative;
   transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
   transform-style: preserve-3d;
-  border: 2px solid #ff007f;
   border-radius: 10px;
   box-shadow: 0px 0px 10px #ff007f; /* Efecto de sombra */
   background-color: #2c2c2c;
@@ -41,6 +40,16 @@
   border: 2px solid #00ff00;
   box-shadow: 0px 0px 10px #00ff00; /* Efecto de sombra */  
 }
+
+.card:hover .card-front {
+  background-color: #000; /* Cambia el color de fondo al verde */
+  transform: scale(0.9); /* Aumenta ligeramente el tamaño */
+  border-color: #ff007f; /* Cambia el borde al rosa vibrante */
+  box-shadow: 0px 0px 10px #ff007f; /* Aumenta el efecto de sombra */
+  position: relative;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
 
 .card-back {
   background-color: #ff007f;

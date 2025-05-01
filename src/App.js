@@ -18,6 +18,13 @@ function App() {
   const [theme, setTheme] = React.useState("animals");
   const [volume, setVolume] = React.useState(0.1); // Estado para el volumen
   const [isMusicPaused, setIsMusicPaused] = React.useState(false); // Estado para controlar si la música está en pausa
+  const [cards, setCards] = React.useState([]);
+  const [time, setTime] = React.useState(0);
+  const [moves, setMoves] = React.useState(0);
+  const [gameOverMessage, setGameOverMessage] = React.useState("");
+  const [selectedCards, setSelectedCards] = React.useState([]);
+  const [matchedCards, setMatchedCards] = React.useState([]);
+
 
   // Función para continuar desde la pantalla de introducción
   const handleContinue = () => {
@@ -47,6 +54,20 @@ function App() {
     }
   }
 
+  const handleCardClick = (index) => {
+    // Lógica para manejar el clic en una carta
+  };
+  
+  const resetGame = () => {
+    setCards([]); // Reinicia las cartas
+    setTime(0); // Reinicia el tiempo
+    setMoves(0); // Reinicia los movimientos
+    setGameOverMessage(""); // Limpia el mensaje de juego terminado
+    setSelectedCards([]); // Limpia la selección de cartas
+    setMatchedCards([]); // Limpia las parejas encontradas
+  };
+  
+
   return (
     <div>
       {showIntro ? (
@@ -68,6 +89,19 @@ function App() {
         setGameStarted = {setGameStarted} 
         setDifficulty={setDifficulty}  
         setTheme={setTheme}
+        cards={cards}
+        time={time}
+        moves={moves}
+        gameOverMessage={gameOverMessage}
+        selectedCards={selectedCards}
+        matchedCards={matchedCards}
+        handleCardClick={handleCardClick}
+        resetGame={resetGame}
+        audio={audio}  // Pasar el objeto de audio
+        volume={volume}  // Pasar el estado de volumen
+        setVolume={setVolume}  // Pasar la función para actualizar el volumen
+        toggleMusic={toggleMusic}  // Pasar la función de detener/reanudar música
+        isMusicPaused={isMusicPaused}  // Pasar el estado de la música
         />
       <VolumeControl
         audio={audio} // Pasa el objeto de audio al componente VolumeControl

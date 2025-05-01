@@ -65,6 +65,16 @@ const Board = ({theme, difficulty, setGameStarted, setDifficulty, setTheme}) => 
     const selectedImages = images.slice(0, numberOfCards/2); // Selecciona las imágenes según la dificultad
     return [...selectedImages, ...selectedImages].sort(() => Math.random() - 0.5); // Devuelve solo el número de cartas según la dificultad
   });
+
+  const gridConfig = {
+    easy: { columns: 3, rows: 2 },
+    medium: { columns: 4, rows: 3 },
+    hard: { columns: 6, rows: 3 },
+  };
+  const { columns, rows } = gridConfig[difficulty] || gridConfig.easy; // Configuración de la cuadrícula según la dificultad
+
+  const boardWidth = columns * 150; // Cada carta tiene un ancho aproximado de 140px
+  const boardHeight = rows * 190; // Cada carta tiene una altura aproximada de 180px
   
   const playSuccessSound = () => {
     const audio = new Audio(successSound);
@@ -167,26 +177,36 @@ const Board = ({theme, difficulty, setGameStarted, setDifficulty, setTheme}) => 
     }, [selectedCards]);  
 
   return (
-    // Mostrar tiempo y movimientos en pantalla
-    <div>
+    <div className="board-container">
       <div className="game-info">
-      <p>Tiempo: {time} segundos</p>
-      <p>Movimientos: {moves}</p>
-      {gameOverMessage && <p className="game-over">{gameOverMessage}</p>}
+        <p>Tiempo: {time} segundos</p>
+        <p>Movimientos: {moves}</p>
+        {gameOverMessage && <p className="game-over">{gameOverMessage}</p>}
       </div>
 
-      <div className="board"> 
+      <div 
+        className="board"
+        style={{
+          display: "grid",
+          gridTemplateColumns: `repeat(${columns}, 1fr)`,
+          gridTemplateRows: `repeat(${rows}, auto)`,
+          gap: "10px",
+          justifyContent: "center",
+          width : `${boardWidth}px`,
+          height: `${boardHeight}px`,
+        }}
+      >
         {cards.map((image, index) => (
-        <Card 
-          key={index} 
-          image={image} 
-          flipped={selectedCards.includes(index) || matchedCards.includes(index)}
-          onClick={() => handleCardClick(index)} 
-        />
-      ))}
-      </div>
-      <button className="reset-button" onClick={resetGame}>Reiniciar Juego</button>
-      <button className="exit-button" onClick={handleExit}>Salir Menú Principal</button>
+          <Card 
+            key={index} 
+            image={image} 
+            flipped={selectedCards.includes(index) || matchedCards.includes(index)}
+            onClick={() => handleCardClick(index)} 
+          />
+        ))}
+    </div>
+      <button className="reset-button" onClick={resetGame}>Reiniciar</button>
+      <button className="exit-button" onClick={handleExit}>Menú Principal</button>
     </div>
   );
 };

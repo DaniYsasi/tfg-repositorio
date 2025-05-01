@@ -1,12 +1,8 @@
 /* Añadir estilos básicos */
 .board {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  max-width:90%;
+  gap: 10px;
+  width: 100%;
   padding: 20px;
   background-color: #282c34;
   border: 2px solid #00ff00;
@@ -73,4 +69,40 @@
 }
 .exit-button:hover {
   background-color: #00ff00; /* Verde más oscuro */
+}
+
+/* Ajustar el diseño del board */
+.board-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenedor de los controles de música */
+.music-controls {
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Alinear verticalmente */
+  gap: 15px; /* Espaciado entre barra de volumen y botón */
+  margin-top: 20px; /* Separación con el board */
+}
+
+/* Botón de detener música */
+.stop-music {
+  background-color: #ff007f;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Press Start 2P", cursive;
+}
+
+/* Contenedor para los botones de juego */
+.game-buttons {
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente */
+  gap: 20px; /* Espaciado entre botones */
+  margin-top: 20px; /* Separación con los controles de música */
 }
