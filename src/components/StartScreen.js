@@ -12,6 +12,10 @@ const StartScreen = ({ onStartGame, onSetDifficulty, onSetTheme }) => {
     onSetTheme(event.target.value);
   };
 
+  const handleExit = () => {
+    window.close(); // Cierra la ventana en navegadores compatibles
+  };
+
   return (
     <div className="start-screen">
       <h1>Juego de Memoria</h1>
@@ -34,6 +38,7 @@ const StartScreen = ({ onStartGame, onSetDifficulty, onSetTheme }) => {
         </label>
       </div>
       <button className="start-button" onClick={onStartGame}>Iniciar Juego</button>
+      <button className="exit-app-button" onClick={handleExit}>Salir</button>
     </div>
   );
 };

@@ -4,7 +4,9 @@
   gap: 10px;
   width: 100%;
   padding: 20px;
-  background-color: #282c34;
+  background-image: url("../assets/intro-ciudad.png"); /* Ruta de la imagen de fondo */
+    background-size: cover;
+    background-position: center;
   border: 2px solid #00ff00;
   border-radius: 10px;
   box-shadow: 0px 0px 10px #00ff00; /* Efecto de sombra */
@@ -14,6 +16,7 @@
 /* Añadir estilo a los contadores de game-info*/
 .game-info {
   text-align: center;
+  margin-top: 20px;
   margin-bottom: 20px;
   font-size: 18px;
   font-weight: bold;
@@ -27,15 +30,21 @@
 
 /* Game Over */
 .game-over {
-  text-align: center;
+  position: fixed; /* Fijo en la pantalla */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centrar completamente */
+  background-color: rgba(249, 249, 249, 0.8); /* Fondo blanco semi-transparente */
+  padding: 30px;
   font-size: 24px;
   font-weight: bold;
   color: #59d433;
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1000; /* Asegurar que esté por encima de otros elementos */
+  text-align: center;
 }
+
 
 /* Añadir estilo a los botones reset*/ 
 .reset-button {
