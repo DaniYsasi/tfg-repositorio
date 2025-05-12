@@ -1,9 +1,10 @@
 import React from "react";
 import "./StartScreen.css";
+import VolumeControl from "./VolumeControl";
 
 // Componente de pantalla de inicio del juego
 // Permite al usuario seleccionar la dificultad y la temática del juego
-const StartScreen = ({ onStartGame, onSetDifficulty, onSetTheme }) => {
+const StartScreen = ({ onStartGame, onSetDifficulty, onSetTheme, audio, volume, setVolume, toggleMusic, isMusicPaused }) => {
   const handleDifficultyChange = (event) => {
     onSetDifficulty(event.target.value);
   };
@@ -38,6 +39,12 @@ const StartScreen = ({ onStartGame, onSetDifficulty, onSetTheme }) => {
         </label>
       </div>
       <button className="start-button" onClick={onStartGame}>Iniciar Juego</button>
+      <div className="music-controls">
+      <VolumeControl audio={audio} volume={volume} setVolume={setVolume} />
+      <button className="stop-music" onClick={toggleMusic}>
+        {isMusicPaused ? "Reanudar Música" : "Detener Música"}
+      </button>
+    </div>
       <button className="exit-app-button" onClick={handleExit}>Salir</button>
     </div>
   );
