@@ -24,6 +24,7 @@
   text-shadow: 0px 0px 5px #ff007f;
     animation: fliker 1.5s infinite; /* Efecto de parpadeo */
 }
+
 .settings {
   display: flex;
   flex-direction: column;

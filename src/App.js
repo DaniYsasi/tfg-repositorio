@@ -123,7 +123,7 @@ function App() {
         />
       </div>
       )}
-      <footer>
+      <footer className="footer">
         <p>Juego de Memoria - React - Dani Puente</p>
       </footer>
     </div>
