@@ -33,7 +33,7 @@ const StartScreen = ({ onStartGame, onSetDifficulty, onSetTheme }) => {
           <select onChange={handleThemeChange}>
             <option value="animals">Animales</option>
             <option value="fruits">Frutas</option>
-            <option value="objects">Objetos</option>
+            <option value="objects">Paisajes</option>
           </select>
         </label>
       </div>

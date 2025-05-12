@@ -21,6 +21,16 @@ import piña from "../assets/piña.png";
 import platano from "../assets/platano.png";
 import uva from "../assets/uva.png";
 import coco from "../assets/coco.png";
+// Importamos las imágenes de los paisajes
+import ciudadmorada from "../assets/ciudadmorada.png";
+import lunaazul from "../assets/lunaazul.png";
+import ordenador from "../assets/ordenador.png";
+import lunamorada from "../assets/lunamorada.png";
+import labagua from "../assets/labagua.png";
+import planta from "../assets/planta.png";
+import lab from "../assets/lab.png";
+import torres from "../assets/torres.png";
+import azul from "../assets/azul.png";
 
 // Importamos los sonidos de éxito y error
 import successSound from "../assets/success-sound.wav";
@@ -35,7 +45,7 @@ const getImagesByTheme = theme => {
     case "fruits":
       return [cereza, fresa, limon, manzana, pera, piña, platano, uva, coco, cereza, fresa, limon, manzana, pera, piña, platano, uva, coco];
     case "objects":
-      return [unicornio, caballomar, delfin, koala, stimpy, oso, tigre, tortuga, ren, unicornio, caballomar, delfin, koala, stimpy, oso, tigre, tortuga, ren]; 
+      return [torres, lunamorada, ciudadmorada,lunaazul, ordenador, labagua, planta, lab, azul, torres, lunamorada, ciudadmorada, lunaazul, ordenador, labagua, planta, lab, azul]; 
     default:
       return [unicornio, caballomar, delfin, koala, stimpy, oso, tigre, tortuga, ren, unicornio, caballomar, delfin, koala, stimpy, oso, tigre, tortuga, ren]; 
       // Por defecto, usamos animales

@@ -1,4 +1,7 @@
 .start-screen {
+  background-image: url("../assets/introanimada.gif"); /* Ruta de la imagen de fondo */
+  background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: column;
   align-items: center;

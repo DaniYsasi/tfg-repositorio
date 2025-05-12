@@ -79,6 +79,24 @@ function App() {
           onStartGame={startGame}
           onSetDifficulty={setDifficulty}
           onSetTheme={setTheme}
+          difficulty={difficulty} 
+          theme={theme}
+          setGameStarted = {setGameStarted} 
+          setDifficulty={setDifficulty}  
+          setTheme={setTheme}
+          cards={cards}
+          time={time}
+          moves={moves}
+          gameOverMessage={gameOverMessage}
+          selectedCards={selectedCards}
+          matchedCards={matchedCards}
+          handleCardClick={handleCardClick}
+          resetGame={resetGame}
+          audio={audio}  // Pasar el objeto de audio
+          volume={volume}  // Pasar el estado de volumen
+          setVolume={setVolume}  // Pasar la función para actualizar el volumen
+          toggleMusic={toggleMusic}  // Pasar la función de detener/reanudar música
+          isMusicPaused={isMusicPaused}  // Pasar el estado de la música
         />
         </div>
       ) : (

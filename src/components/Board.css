@@ -4,9 +4,9 @@
   gap: 10px;
   width: 100%;
   padding: 20px;
-  background-image: url("../assets/intro-ciudad.png"); /* Ruta de la imagen de fondo */
-    background-size: cover;
-    background-position: center;
+  background-image: url("../assets/introanimada.gif"); /* Ruta de la imagen de fondo */
+  background-size: cover;
+  background-position: center;
   border: 2px solid #00ff00;
   border-radius: 10px;
   box-shadow: 0px 0px 10px #00ff00; /* Efecto de sombra */
