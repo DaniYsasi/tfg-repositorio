@@ -204,7 +204,9 @@ const Board = ({theme, difficulty, setGameStarted, setDifficulty, setTheme, audi
 
   return (
     <div className="board-container">
+      
   <div className="game-info">
+    
     <p>Tiempo: {time} segundos</p>
     <p>Movimientos: {moves}</p>
     {gameOverMessage && <p className="game-over">{gameOverMessage}</p>}
@@ -252,7 +254,7 @@ const Board = ({theme, difficulty, setGameStarted, setDifficulty, setTheme, audi
 )}
 
   </div>
-
+  <div className="game">
   <div className="board" style={{
     display: "grid",
     gridTemplateColumns: `repeat(${columns}, 1fr)`,
@@ -271,7 +273,6 @@ const Board = ({theme, difficulty, setGameStarted, setDifficulty, setTheme, audi
       />
     ))}
   </div>
-
   <div className="controls-container">
     <div className="game-buttons">
       <button className="reset-button" onClick={resetGame}>Nueva Partida</button>
@@ -286,7 +287,7 @@ const Board = ({theme, difficulty, setGameStarted, setDifficulty, setTheme, audi
     </div>
   </div>
 </div>
-
+/</div>
   );
 };
 

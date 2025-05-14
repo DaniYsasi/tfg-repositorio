@@ -1,10 +1,26 @@
 /* Añadir estilos básicos */
+.game {
+  width: 95%;
+  padding: 20px;
+  background-image: url("../assets/introanimada.gif"); /* Ruta de la imagen de fondo */
+  background-size: cover;
+  background-position: center;
+  border: 2px solid #00ff00;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #00ff00; /* Efecto de sombra */
+  transition: background-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .board {
   display: grid;
   gap: 10px;
   width: 100%;
   padding: 20px;
-  background-image: url("../assets/introanimada.gif"); /* Ruta de la imagen de fondo */
+  background-color: rgba(13, 56, 82, 0.7); /* Oscurece el fondo */
   background-size: cover;
   background-position: center;
   border: 2px solid #00ff00;
@@ -125,6 +141,7 @@
   gap: 15px; /* Espaciado entre barra de volumen y botón */
   justify-content: flex-end; /* Alinear a la derecha */
   align-items: center; /* Alinear verticalmente */
+  margin-left: 20px;
 }
 
 /* Botón de detener música */
