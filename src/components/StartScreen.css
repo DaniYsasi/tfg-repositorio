@@ -17,6 +17,14 @@
   50% { opacity: 0.5; }
   100% { opacity: 1; }
 }
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.9); /* Oscurece el fondo */
+  padding: 40px;
+  text-align: center;
+  border-radius: 20px;
+}
+
 .start-screen h1 {
   font-size: 36px;
   margin-bottom: 20px;
@@ -71,6 +79,38 @@ select {
                1px 1px 0 #000; /* Simula un borde negro en el texto */
 }
 .start-button:hover {
+  background-color: #00ff00;
+  border-color: #00ff00;
+  text-shadow: 0px 0px 10px #00ff00;
+  animation: glow 1s infinite;
+  box-shadow: 0px 0px 10px #00ff00;
+  transition: all 0.3s ease;
+  text-shadow: -1px -1px 0 #000, 
+               1px -1px 0 #000, 
+               -1px 1px 0 #000, 
+               1px 1px 0 #000; /* Simula un borde negro en el texto */
+}
+
+.ranking-button {
+  background-color: #ff007f;
+  color: white;
+  padding: 10px 20px;
+  margin-left: 10px;
+  font-size: 18px;
+  border: 2px solid #ff007f;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 0px 0px 10px #ff007f;
+  transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
+  text-shadow: -1px -1px 0 #000, 
+               1px -1px 0 #000, 
+               -1px 1px 0 #000, 
+               1px 1px 0 #000; /* Simula un borde negro en el texto */
+}
+
+.ranking-button:hover {
   background-color: #00ff00;
   border-color: #00ff00;
   text-shadow: 0px 0px 10px #00ff00;

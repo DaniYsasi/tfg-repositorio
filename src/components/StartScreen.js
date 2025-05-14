@@ -2,9 +2,10 @@ import React from "react";
 import "./StartScreen.css";
 import VolumeControl from "./VolumeControl";
 
+
 // Componente de pantalla de inicio del juego
 // Permite al usuario seleccionar la dificultad y la temática del juego
-const StartScreen = ({ onStartGame, onSetDifficulty, onSetTheme, audio, volume, setVolume, toggleMusic, isMusicPaused }) => {
+const StartScreen = ({ onStartGame, onSetDifficulty, onSetTheme, audio, volume, setVolume, toggleMusic, isMusicPaused, goToRanking }) => {
   const handleDifficultyChange = (event) => {
     onSetDifficulty(event.target.value);
   };
@@ -19,7 +20,9 @@ const StartScreen = ({ onStartGame, onSetDifficulty, onSetTheme, audio, volume, 
 
   return (
     <div className="start-screen">
+      <div className="overlay">
       <h1>Juego de Memoria</h1>
+      
       <div className="settings">
         <label>
           Dificultad:
@@ -39,6 +42,7 @@ const StartScreen = ({ onStartGame, onSetDifficulty, onSetTheme, audio, volume, 
         </label>
       </div>
       <button className="start-button" onClick={onStartGame}>Iniciar Juego</button>
+      <button className="ranking-button" onClick={goToRanking}>Ranking</button>
       <div className="music-controls">
       <VolumeControl audio={audio} volume={volume} setVolume={setVolume} />
       <button className="stop-music" onClick={toggleMusic}>
@@ -46,6 +50,7 @@ const StartScreen = ({ onStartGame, onSetDifficulty, onSetTheme, audio, volume, 
       </button>
     </div>
       <button className="exit-app-button" onClick={handleExit}>Salir</button>
+    </div>
     </div>
   );
 };

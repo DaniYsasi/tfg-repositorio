@@ -5,6 +5,7 @@ import Board from "./components/Board";
 import "./App.css";
 import VolumeControl from "./components/VolumeControl";
 import introMusic from "./assets/intro-music.wav"; // Importa la música de introducción
+import RankingScreen from "./components/RankingScreen";
 
 const audio = new Audio(introMusic); // Importa la música de introducción
 audio.loop = true; // Reproduce la música en bucle
@@ -25,6 +26,8 @@ function App() {
   const [selectedCards, setSelectedCards] = React.useState([]);
   const [matchedCards, setMatchedCards] = React.useState([]);
 
+  // Pantalla de ranking
+  const [showRanking, setShowRanking] = React.useState(false);
 
   // Función para continuar desde la pantalla de introducción
   const handleContinue = () => {
@@ -73,7 +76,9 @@ function App() {
       {showIntro ? (
         <IntroScreen onContinue={handleContinue} />
       ) : null}
-      {!gameStarted ? (
+      {showRanking ? ( 
+      <RankingScreen goBack={() => setShowRanking(false)} />
+      ):!gameStarted ? (
         <div className ="start-screen-container">
         <StartScreen
           onStartGame={startGame}
@@ -97,6 +102,7 @@ function App() {
           setVolume={setVolume}  // Pasar la función para actualizar el volumen
           toggleMusic={toggleMusic}  // Pasar la función de detener/reanudar música
           isMusicPaused={isMusicPaused}  // Pasar el estado de la música
+          goToRanking={() => setShowRanking(true)} // Función para mostrar la pantalla de ranking
         />
         </div>
       ) : (

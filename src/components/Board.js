@@ -172,13 +172,28 @@ const Board = ({theme, difficulty, setGameStarted, setDifficulty, setTheme, audi
 
     // Comprobar si se han emparejado todas las cartas
     // Si es así, mostrar un mensaje de victoria y detener el temporizador
+    const [saveScoreMessage, setSaveScoreMessage] = useState("");
+    const [showSaveScoreOptions, setShowSaveScoreOptions] = useState(false);
+
     useEffect(() => {
       if (matchedCards.length === cards.length && matchedCards.length > 0) {
         setGameOverMessage("¡Felicidades! Has ganado el juego.");
         setIsPlaying(false); // Detiene el temporizador
+        setSaveScoreMessage("¿Quieres guardar tu puntuación?");
+        setShowSaveScoreOptions(true);
         console.log("Has ganado el juego. Tiempo: " + time + " segundos. Movimientos: " + moves);
       }
     },[matchedCards, cards.length, time, moves, cards]);
+
+    //preguntar al jugador si quiere guardar su puntuación - introducir nombre
+    const [isNamePromptVisible, setIsNamePromptVisible] = useState(false);
+    const [playerName, setPlayerName] = useState("");
+
+    const handleSaveScore = () => {
+      setIsNamePromptVisible(true); // Muestra el formulario de nombre
+    };
+    
+
 
     // Contar los movimientos del jugador
     useEffect(() => {
@@ -189,38 +204,78 @@ const Board = ({theme, difficulty, setGameStarted, setDifficulty, setTheme, audi
 
   return (
     <div className="board-container">
-      <div className="game-info">
-        <p>Tiempo: {time} segundos</p>
-        <p>Movimientos: {moves}</p>
-        {gameOverMessage && <p className="game-over">{gameOverMessage}</p>}
+  <div className="game-info">
+    <p>Tiempo: {time} segundos</p>
+    <p>Movimientos: {moves}</p>
+    {gameOverMessage && <p className="game-over">{gameOverMessage}</p>}
+    
+    {/* Pregunta para guardar puntuación */}
+    {/* Pregunta para guardar puntuación */}
+    {showSaveScoreOptions && (
+      <div className="save-score-container">
+        <p className="save-score-message">{saveScoreMessage}</p>
+        <button onClick={() => {
+          setShowSaveScoreOptions(false); // Oculta este mensaje
+          setIsNamePromptVisible(true); // Muestra el formulario de entrada
+        }}>
+          Guardar
+        </button>
+        <button onClick={() => setShowSaveScoreOptions(false)}>Cancelar</button>
       </div>
+    )}
 
-      <div 
-        className="board"
-        style={{
-          display: "grid",
-          gridTemplateColumns: `repeat(${columns}, 1fr)`,
-          gridTemplateRows: `repeat(${rows}, auto)`,
-          gap: "10px",
-          justifyContent: "center",
-          width : `${boardWidth}px`,
-          height: `${boardHeight}px`,
-        }}
-      >
-        {cards.map((image, index) => (
-          <Card 
-            key={index} 
-            image={image} 
-            flipped={selectedCards.includes(index) || matchedCards.includes(index)}
-            onClick={() => handleCardClick(index)} 
-          />
-        ))}
-    </div>
+    {/* Formulario para introducir el nombre */}
+    {isNamePromptVisible && (
+  <div className="name-prompt-container">
+    <p>Introduce tu nombre:</p>
+    <input 
+      type="text" 
+      value={playerName} 
+      onChange={(e) => setPlayerName(e.target.value)}
+    />
+    <button onClick={() => {
+      if (playerName.trim()) { // Asegurar que no está vacío
+        const newScore = { name: playerName, time, moves };
+        const ranking = JSON.parse(localStorage.getItem("ranking")) || [];
+        ranking.push(newScore);
+        ranking.sort((a, b) => a.time - b.time);
+        localStorage.setItem("ranking", JSON.stringify(ranking.slice(0, 5)));
 
-    <div className="controls-container">
-      <div className="game-buttons">
-        <button className="reset-button" onClick={resetGame}>Nueva Partida</button>
-        <button className="exit-button" onClick={handleExit}>Menú Principal</button>
+        setIsNamePromptVisible(false);
+        setShowSaveScoreOptions(false);
+      }
+    }}>
+      Guardar
+    </button>
+    <button onClick={() => setIsNamePromptVisible(false)}>Cancelar</button>
+  </div>
+)}
+
+  </div>
+
+  <div className="board" style={{
+    display: "grid",
+    gridTemplateColumns: `repeat(${columns}, 1fr)`,
+    gridTemplateRows: `repeat(${rows}, auto)`,
+    gap: "10px",
+    justifyContent: "center",
+    width: `${boardWidth}px`,
+    height: `${boardHeight}px`,
+  }}>
+    {cards.map((image, index) => (
+      <Card 
+        key={index} 
+        image={image} 
+        flipped={selectedCards.includes(index) || matchedCards.includes(index)}
+        onClick={() => handleCardClick(index)} 
+      />
+    ))}
+  </div>
+
+  <div className="controls-container">
+    <div className="game-buttons">
+      <button className="reset-button" onClick={resetGame}>Nueva Partida</button>
+      <button className="exit-button" onClick={handleExit}>Menú Principal</button>
     </div>
 
     <div className="music-controls">
@@ -229,8 +284,9 @@ const Board = ({theme, difficulty, setGameStarted, setDifficulty, setTheme, audi
         {isMusicPaused ? "Reanudar Música" : "Detener Música"}
       </button>
     </div>
-    </div>
-    </div>
+  </div>
+</div>
+
   );
 };
 
