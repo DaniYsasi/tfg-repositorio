@@ -1,0 +1,156 @@
+.start-screen {
+  background-image: url("../assets/introanimada.gif"); /* Ruta de la imagen de fondo */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #282c34;
+  font-family: "Press Start 2P", cursive; /* Fuente estilo retro*/
+  color: #00ff00;
+  text-shadow: 0px 0px 5px #00ff00;
+}
+@keyframes fliker {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.9); /* Oscurece el fondo */
+  padding: 40px;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.start-screen h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #ff007f;
+  text-shadow: 0px 0px 5px #ff007f;
+    animation: fliker 1.5s infinite; /* Efecto de parpadeo */
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+label {
+  display: block;
+  margin: 10px 0;
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #00ffff
+}
+select {
+  background-color: #000;
+  color: #ffff00;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ffff00;
+  margin-bottom: 20px;
+}
+.start-screen p {
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+.start-button {
+  
+  background-color: #ff007f;
+  color: white;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: 2px solid #ff007f;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 0px 0px 10px #ff007f;
+  transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
+  text-shadow: -1px -1px 0 #000, 
+               1px -1px 0 #000, 
+               -1px 1px 0 #000, 
+               1px 1px 0 #000; /* Simula un borde negro en el texto */
+}
+.start-button:hover {
+  background-color: #00ff00;
+  border-color: #00ff00;
+  text-shadow: 0px 0px 10px #00ff00;
+  animation: glow 1s infinite;
+  box-shadow: 0px 0px 10px #00ff00;
+  transition: all 0.3s ease;
+  text-shadow: -1px -1px 0 #000, 
+               1px -1px 0 #000, 
+               -1px 1px 0 #000, 
+               1px 1px 0 #000; /* Simula un borde negro en el texto */
+}
+
+.ranking-button {
+  background-color: #ff007f;
+  color: white;
+  padding: 10px 20px;
+  margin-left: 10px;
+  font-size: 18px;
+  border: 2px solid #ff007f;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 0px 0px 10px #ff007f;
+  transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
+  text-shadow: -1px -1px 0 #000, 
+               1px -1px 0 #000, 
+               -1px 1px 0 #000, 
+               1px 1px 0 #000; /* Simula un borde negro en el texto */
+}
+
+.ranking-button:hover {
+  background-color: #00ff00;
+  border-color: #00ff00;
+  text-shadow: 0px 0px 10px #00ff00;
+  animation: glow 1s infinite;
+  box-shadow: 0px 0px 10px #00ff00;
+  transition: all 0.3s ease;
+  text-shadow: -1px -1px 0 #000, 
+               1px -1px 0 #000, 
+               -1px 1px 0 #000, 
+               1px 1px 0 #000; /* Simula un borde negro en el texto */
+}
+
+.exit-app-button {
+  margin-top: 10px;
+  background-color: #ff007f;
+  color: white;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: 2px solid #ff007f;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 0px 0px 10px #ff007f;
+  transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
+  text-shadow: -1px -1px 0 #000, 
+               1px -1px 0 #000, 
+               -1px 1px 0 #000, 
+               1px 1px 0 #000; /* Simula un borde negro en el texto */
+}
+
+.exit-app-button:hover {
+  background-color: #00ff00;
+  border-color: #00ff00;
+  text-shadow: 0px 0px 10px #00ff00;
+  animation: glow 1s infinite;
+  box-shadow: 0px 0px 10px #00ff00;
+  transition: all 0.3s ease;
+  text-shadow: -1px -1px 0 #000, 
+               1px -1px 0 #000, 
+               -1px 1px 0 #000, 
+               1px 1px 0 #000; /* Simula un borde negro en el texto */
+}

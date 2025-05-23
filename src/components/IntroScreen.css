@@ -1,0 +1,54 @@
+.intro-screen {
+    height: 100vh;
+    width: 100%;
+    background-image: url("../assets/intro-ciudad.png"); /* Ruta de la imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1s ease-in;
+  }
+
+.intro-screen.fade-out {
+    opacity: 0; /* Desaparece la pantalla de introducción */
+  }
+
+  .intro-screen:active .game-title,
+  .intro-screen:active .continue-text {
+    text-shadow: 0px 0px 10px #ff007f, 0px 0px 30px #ff007f;/* Efecto de resplandor */
+    color: #ffffff;
+    transform: scale(1.1); /* Efecto de zoom */
+    transition: transform 1s ease-in, text-shadow 1s ease-in;
+    
+  }
+  
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.7); /* Oscurece el fondo */
+    padding: 40px;
+    text-align: center;
+    border-radius: 20px;
+  }
+  
+  .game-title {
+    font-family: "Press Start 2P", cursive; /* Fuente retro */
+    font-size: 48px;
+    color: #00ff00; /* Verde neón */
+    text-shadow: 0px 0px 10px #00ff00;
+    animation: fliker 1.5s infinite; /* Efecto de parpadeo */
+    margin-bottom: 20px;
+    
+  }
+  
+  .continue-text {
+    font-family: "Press Start 2P", cursive;
+    font-size: 18px;
+    color: #ff007f; /* Rosa vibrante */
+    text-shadow: 0px 0px 10px #ff007f;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Evita el scroll */
+  }

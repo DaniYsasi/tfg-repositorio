@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  font-family: 'Press Start 2P', cursive;
+  margin: 0;
+  background-color: #2c2c2c; /* Fondo oscuro */
+  color: #00ff00; /* Texto verde neón */
+  text-shadow: 0px 0px 5px #00ff00; /* Efecto de brillo */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+button {
+  background-color: #ff007f;
+  color: white;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Press Start 2P', cursive; /* Fuente estilo retro */
+  border: 2px solid #ff007f;
+  border-radius: 10px;
+  cursor: pointer;
+  text-shadow: 0px 0px 10px #ff007f; /* Efecto de brillo */
+  transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
+}
+button:hover {
+  background-color: #00ff00; /* Cambia a verde neón al pasar el mouse */
+  transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+  border-color: #00ff00;
+  text-shadow: 0px 0px 10px #00ff00; /* Efecto de brillo */
+  box-shadow: 0px 0px 10px #00ff00; /* Efecto de sombra */
+  animation: glow 1s infinite; /* Efecto de parpadeo */
+  transition: all 0.3s ease; /* Transiciones suaves */
+
+}
+
+#volume-control {
+  appearance: none;
+  width: 200px;
+  height: 10px;
+  background: #ff007f;
+  border-radius: 5px;
+  cursor: pointer
+}
+
+#volume-control::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #00ff00;
+  border-radius: 50%;
+  cursor: pointer;
+}

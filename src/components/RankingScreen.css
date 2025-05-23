@@ -1,0 +1,54 @@
+.ranking-screen {
+    background-image: url("../assets/introanimada.gif"); /* Ruta de la imagen de fondo */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #282c34;
+  font-family: "Press Start 2P", cursive; /* Fuente estilo retro*/
+  color: #00ff00;
+  text-shadow: 0px 0px 5px #00ff00;
+  }
+
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.7); /* Oscurece el fondo */
+    padding: 40px;
+    text-align: center;
+    border-radius: 20px;
+  }
+  
+  .ranking-screen ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .ranking-screen li {
+    font-size: 18px;
+    margin: 5px 0;
+    color: #ffff00;
+    text-shadow: 0px 0px 5px #ffff00;
+  }
+  
+  .ranking-screen button {
+    background-color: #ff007f;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    text-shadow: -1px -1px 0 #000, 
+               1px -1px 0 #000, 
+               -1px 1px 0 #000, 
+               1px 1px 0 #000; /* Simula un borde negro en el texto */
+  }
+  
+  .ranking-screen button:hover {
+    background-color: #00ff00;
+    text-shadow: -1px -1px 0 #000, 
+               1px -1px 0 #000, 
+               -1px 1px 0 #000, 
+               1px 1px 0 #000; /* Simula un borde negro en el texto */
+  }
+  
